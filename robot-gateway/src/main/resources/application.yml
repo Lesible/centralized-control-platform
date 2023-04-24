@@ -1,0 +1,24 @@
+server:
+  port: 18085
+spring:
+  profiles:
+    active: dev
+  application:
+    name: robot-gateway
+  cloud:
+    nacos:
+      username: nacos
+      password: Shkj@1234!
+      discovery:
+        server-addr: 172.16.161.244:8848
+      config:
+        file-extension: yml
+        server-addr: 172.16.161.244:8848
+        extension-configs:
+          - data-id: mysql-${spring.profiles.active}.yaml
+            refresh: true
+          - data-id: redis-${spring.profiles.active}.yaml
+            refresh: true
+  config:
+    import:
+      - nacos:robot-gateway-${spring.profiles.active}.yml?refresh=true
