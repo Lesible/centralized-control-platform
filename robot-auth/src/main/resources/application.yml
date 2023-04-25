@@ -15,10 +15,11 @@ spring:
         file-extension: yml
         server-addr: 172.16.161.244:8848
         extension-configs:
-          - data-id: mysql-${spring.profiles.active}.yaml
+          - data-id: mysql-${spring.profiles.active}.yml
             refresh: true
-          - data-id: redis-${spring.profiles.active}.yaml
+          - data-id: redis-${spring.profiles.active}.yml
             refresh: true
   config:
     import:
       - nacos:robot-auth-${spring.profiles.active}.yml?refresh=true
+      - nacos:mysql-${spring.profiles.active}.yml?refresh=true
